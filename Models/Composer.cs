@@ -7,10 +7,10 @@ namespace Filmography.Models
   {
     public Composer()
     {
-      this.JoinEntities = new HashSet<Producer>();
+      this.JoinEntities = new HashSet<MovieWiki>();
     }
     public int ComposerId { get; set; }
     public string ComposerName { get; set; }
-    public virtual ICollection<Producer> JoinEntities { get; set; }
+    public virtual ICollection<MovieWiki> JoinEntities { get; set; }
   }
 }

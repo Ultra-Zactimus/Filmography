@@ -8,7 +8,7 @@ namespace Filmography.Models
     public DbSet<Composer> Composers { get; set; }
     public DbSet<Director> Directors { get; set; }
     public DbSet<Movie> Movies { get; set; }
-    public DbSet<Producer> Producer { get; set; }
+    public DbSet<MovieWiki> MovieWiki { get; set; }
 
     public FilmographyContext(DbContextOptions options) : base(options) { }
 

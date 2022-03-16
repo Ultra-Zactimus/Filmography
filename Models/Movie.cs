@@ -7,11 +7,11 @@ namespace Filmography.Models
   {
     public Movie()
     {
-      this.JoinEntities = new HashSet<Producer>();
+      this.JoinEntities = new HashSet<MovieWiki>();
     }
     public int MovieId { get; set; }
     public string MovieName { get; set; }
     public string Description { get; set; }
-    public virtual ICollection<Producer> JoinEntities { get; set; }
+    public virtual ICollection<MovieWiki> JoinEntities { get; set; }
   }
 }
