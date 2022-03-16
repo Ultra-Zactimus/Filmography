@@ -1,0 +1,42 @@
+body
+{
+  text-align: center;
+  background-color: rgb(233, 202, 144);
+}
+
+header
+{
+  width: 100%;
+  height: 60px;
+  top: 0px;
+  margin-bottom: 50px;
+  background-color: rgb(231, 178, 178);
+}
+
+footer
+{
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  bottom: 0px;
+  background-color: rgb(231, 178, 178);
+}
+
+#stylist-list, #edit, #client-info
+{
+  display: inline-block;
+  width: 175px;
+  padding: 5px;
+}
+
+#client-list, #delete, #stylist-info
+{
+  display: inline-block;
+  width: 175px;
+  padding: 5px;
+}
+
+#warning
+{
+  color: red;
+}

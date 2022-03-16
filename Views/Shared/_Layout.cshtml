@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="~/css/site.css">
   </head>
   <body>
+  <div class="container">
     @RenderBody()
-    @await Html.PartialAsync("Footer")
+  </div>
+  @await Html.PartialAsync("Footer")
   </body>
 </html>

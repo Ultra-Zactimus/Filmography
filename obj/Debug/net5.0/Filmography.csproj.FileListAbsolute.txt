@@ -41,14 +41,6 @@ C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Actors\Create.cs
 C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Actors\Delete.cshtml.g.cs
 C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Actors\Edit.cshtml.g.cs
 C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Actors\Index.cshtml.g.cs
-C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Composers\Create.cshtml.g.cs
-C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Composers\Delete.cshtml.g.cs
-C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Composers\Edit.cshtml.g.cs
-C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Composers\Index.cshtml.g.cs
-C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Directors\Create.cshtml.g.cs
-C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Directors\Delete.cshtml.g.cs
-C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Directors\Edit.cshtml.g.cs
-C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Directors\Index.cshtml.g.cs
 C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Movies\Create.cshtml.g.cs
 C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Movies\Delete.cshtml.g.cs
@@ -59,3 +51,9 @@ C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Shared\_Layout.c
 C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Filmography.RazorTargetAssemblyInfo.cs
 C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Filmography.Views.pdb
 C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Movies\Details.cshtml.g.cs
+C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Actors\Details.cshtml.g.cs
+C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Actors\AddMovie.cshtml.g.cs
+C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Directors\Create.cshtml.g.cs
+C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Directors\Delete.cshtml.g.cs
+C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Directors\Edit.cshtml.g.cs
+C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Directors\Index.cshtml.g.cs

@@ -9,6 +9,9 @@
 {
   @Html.LabelFor(model => model.MovieName)
   @Html.TextBoxFor(model => model.MovieName)
+
+  @Html.LabelFor(model => model.Description)
+  @Html.TextBoxFor(model => model.Description)
   <input type="submit" value="Add new movie" />
 }
 <p>@Html.ActionLink("Show all movie", "Index")</p>

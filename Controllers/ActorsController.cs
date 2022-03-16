@@ -72,8 +72,29 @@ namespace Filmography.Controllers
     public ActionResult AddMovie(int id)
     {
       var thisActor = _db.Actors.FirstOrDefault(actor => actor.ActorId == id);
-      ViewBag.MovieId = new SelectList(_db.Movies, "MovieId", "MName");
+      var thisMovieWiki = _db.MovieWiki.Where(moviewiki => moviewiki.ActorId == id);
+      
+      List<Movie> movies = _db.Movies.ToList();
+      List<Movie> movieList = _db.Movies.ToList();
+
+      foreach (MovieWiki movieWiki in thisMovieWiki)
+      {
+        foreach(Movie movie in movies)
+        {
+          if (movie.MovieId == movieWiki.MovieId)
+          {
+            movieList.Remove(movie);
+          }
+        }
+      }
+      ViewBag.MovieId = new SelectList(movieList, "MovieId", "MovieName");
+      ViewBag.movieList = movieList.Count;
       return View(thisActor);
+
+
+      // var thisActor = _db.Actors.FirstOrDefault(actor => actor.ActorId == id);
+      // ViewBag.MovieId = new SelectList(_db.Movies, "MovieId", "MovieName");
+      // return View(thisActor);
     }
 
     [HttpPost]

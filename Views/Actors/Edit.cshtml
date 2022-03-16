@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Filmography.Models.Actor
+
+<h2>Edit</h2>
+
+<h4>Edit this actor: @Html.DisplayFor(model => model.ActorName)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.ActorId)
+
+  @Html.LabelFor(model => model.ActorName)
+  @Html.EditorFor(model => model.ActorName)
+
+  @Html.Label("Select Movie")
+  @Html.DropDownList("MovieId")
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
