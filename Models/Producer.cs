@@ -3,15 +3,14 @@ using System.Linq;
 
 namespace Filmography.Models
 {
-  public class Movie
+  public class Producer
   {
-    public Movie()
+    public Producer()
     {
       this.JoinEntities = new HashSet<Producer>();
     }
-    public int MovieId { get; set; }
-    public string MovieName { get; set; }
-    public string Description { get; set; }
+    public int ProducerId { get; set; }
+    public string ProducerName { get; set; }
     public virtual ICollection<Producer> JoinEntities { get; set; }
   }
 }

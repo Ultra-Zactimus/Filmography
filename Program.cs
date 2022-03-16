@@ -1,7 +1,7 @@
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Films
+namespace Filmography
 {
   public class Program
   {
