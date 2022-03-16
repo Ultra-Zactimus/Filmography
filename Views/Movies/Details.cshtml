@@ -19,8 +19,7 @@ else
   <ul>
   @foreach(var join in Model.JoinEntities)
   {
-    <li>@join.Actor.ActorName</li>
-    <li>@Html.ActionLink($"{@join.Course.Name}", "Details", "Courses", new { id = join.Course.CourseId })</li>
+    <li>@Html.ActionLink($"{@join.Actor.ActorName}", "Details", "Actors", new { id = join.Actor.ActorId })</li>
   }
   </ul>
 }

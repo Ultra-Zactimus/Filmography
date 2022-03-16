@@ -35,7 +35,7 @@ namespace Filmography.Controllers
       _db.SaveChanges();
       if (MovieId != 0)
       {
-        _db.MovieWiki.Add(new MovieWiki() { MovieId = MovieId, ActorId = actor.ActorId });
+        _db.MovieActor.Add(new MovieActor() { MovieId = MovieId, ActorId = actor.ActorId });
         _db.SaveChanges();
       }
       return RedirectToAction("Index");
@@ -62,7 +62,7 @@ namespace Filmography.Controllers
     {
       if (MovieId != 0)
       {
-        _db.MovieWiki.Add(new MovieWiki() { MovieId = MovieId, ActorId = actor.ActorId });
+        _db.MovieActor.Add(new MovieActor() { MovieId = MovieId, ActorId = actor.ActorId });
       }
       _db.Entry(actor).State = EntityState.Modified;
       _db.SaveChanges();
@@ -72,16 +72,16 @@ namespace Filmography.Controllers
     public ActionResult AddMovie(int id)
     {
       var thisActor = _db.Actors.FirstOrDefault(actor => actor.ActorId == id);
-      var thisMovieWiki = _db.MovieWiki.Where(moviewiki => moviewiki.ActorId == id);
+      var thisMovieActor = _db.MovieActor.Where(MovieActor => MovieActor.ActorId == id);
       
       List<Movie> movies = _db.Movies.ToList();
       List<Movie> movieList = _db.Movies.ToList();
 
-      foreach (MovieWiki movieWiki in thisMovieWiki)
+      foreach (MovieActor MovieActor in thisMovieActor)
       {
         foreach(Movie movie in movies)
         {
-          if (movie.MovieId == movieWiki.MovieId)
+          if (movie.MovieId == MovieActor.MovieId)
           {
             movieList.Remove(movie);
           }
@@ -102,7 +102,7 @@ namespace Filmography.Controllers
     {
       if (MovieId != 0)
       {
-        _db.MovieWiki.Add(new MovieWiki() { MovieId = MovieId, ActorId = actor.ActorId });
+        _db.MovieActor.Add(new MovieActor() { MovieId = MovieId, ActorId = actor.ActorId });
         _db.SaveChanges();
       }
       return RedirectToAction("Index");
@@ -126,8 +126,8 @@ namespace Filmography.Controllers
     [HttpPost]
     public ActionResult DeleteMovie(int joinId)
     {
-      var joinEntry = _db.MovieWiki.FirstOrDefault(entry => entry.MovieWikiId == joinId);
-      _db.MovieWiki.Remove(joinEntry);
+      var joinEntry = _db.MovieActor.FirstOrDefault(entry => entry.MovieActorId == joinId);
+      _db.MovieActor.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

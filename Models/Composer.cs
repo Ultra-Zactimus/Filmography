@@ -7,10 +7,10 @@
 //   {
 //     public Composer()
 //     {
-//       this.JoinEntities = new HashSet<MovieWiki>();
+//       this.JoinEntities = new HashSet<MovieComposer>();
 //     }
 //     public int ComposerId { get; set; }
 //     public string ComposerName { get; set; }
-//     public virtual ICollection<MovieWiki> JoinEntities { get; set; }
+//     public virtual ICollection<MovieComposer> JoinEntities { get; set; }
 //   }
 // }

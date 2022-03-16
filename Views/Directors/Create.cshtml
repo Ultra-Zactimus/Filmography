@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Filmography.Models.Director
+
+<h4>Add Director:</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.DirectorName)
+  @Html.TextBoxFor(model => model.DirectorName)
+  <input type="submit" value="Add new Actor" />
+}
+<p>@Html.ActionLink("Back", "Index")</p>

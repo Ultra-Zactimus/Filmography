@@ -1,0 +1,29 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Filmography.Models.Director
+
+<h2>Add a movie</h2>
+
+<h4>Add a movie to this director: @Html.DisplayFor(model => model.DirectorName)</h4>
+
+@if(ViewBag.movieList != 0)
+{
+  @using (Html.BeginForm())
+  {
+    @Html.HiddenFor(model => model.DirectorId)
+
+    @Html.Label("Select movie")
+    @Html.DropDownList("MovieId")
+
+    <input type="submit" value="Save" />
+  }
+}
+else
+{
+  <p>There are no movies to add to this director</p>
+}
+
+<p>@Html.ActionLink("Add new Film", "Create", "Movies")</p>
+<p>@Html.ActionLink("Back to list", "Index")</p>

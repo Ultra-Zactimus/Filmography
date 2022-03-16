@@ -21,7 +21,7 @@ else
     <li>@join.Movie.MovieName</li>
     @using (Html.BeginForm("DeleteMovie", "Actors"))
     {
-      @Html.Hidden("joinId", @join.MovieWikiId)
+      @Html.Hidden("joinId", @join.MovieActorId)
       <input type="submit" value="Delete"/>
     }
   }

@@ -57,3 +57,5 @@ C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Directors\Create
 C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Directors\Delete.cshtml.g.cs
 C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Directors\Edit.cshtml.g.cs
 C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Directors\Index.cshtml.g.cs
+C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Directors\AddMovie.cshtml.g.cs
+C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Directors\Details.cshtml.g.cs

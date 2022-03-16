@@ -35,7 +35,7 @@
 //       _db.SaveChanges();
 //       if (MovieId != 0)
 //       {
-//         _db.MovieWiki.Add(new MovieWiki() { MovieId = MovieId, ComposerId = composer.ComposerId });
+//         _db.MovieComposer.Add(new MovieComposer() { MovieId = MovieId, ComposerId = composer.ComposerId });
 //         _db.SaveChanges();
 //       }
 //       return RedirectToAction("Index");
@@ -62,7 +62,7 @@
 //     {
 //       if (MovieId != 0)
 //       {
-//         _db.MovieWiki.Add(new MovieWiki() { MovieId = MovieId, ComposerId = composer.ComposerId });
+//         _db.MovieComposer.Add(new MovieComposer() { MovieId = MovieId, ComposerId = composer.ComposerId });
 //       }
 //       _db.Entry(composer).State = EntityState.Modified;
 //       _db.SaveChanges();
@@ -81,7 +81,7 @@
 //     {
 //       if (MovieId != 0)
 //       {
-//         _db.MovieWiki.Add(new MovieWiki() { MovieId = MovieId, ComposerId = composer.ComposerId });
+//         _db.MovieComposer.Add(new MovieComposer() { MovieId = MovieId, ComposerId = composer.ComposerId });
 //         _db.SaveChanges();
 //       }
 //       return RedirectToAction("Index");
@@ -105,8 +105,8 @@
 //     [HttpPost]
 //     public ActionResult DeleteMovie(int joinId)
 //     {
-//       var joinEntry = _db.MovieWiki.FirstOrDefault(entry => entry.MovieWikiId == joinId);
-//       _db.MovieWiki.Remove(joinEntry);
+//       var joinEntry = _db.MovieComposer.FirstOrDefault(entry => entry.MovieComposerId == joinId);
+//       _db.MovieComposer.Remove(joinEntry);
 //       _db.SaveChanges();
 //       return RedirectToAction("Index");
 //     }

@@ -1,0 +1,35 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Filmography.Models.Director
+
+<h2>Director Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.DirectorName): @Html.DisplayFor(model => model.DirectorName)</h3>
+
+@if(@Model.JoinEntities2.Count == 0)
+{
+  <p>This director has no movies to be added to yet</p>
+}
+else
+{
+  <h4>Movies directed:</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntities2)
+  {
+    <li>@join.Movie.MovieName</li>
+    @using (Html.BeginForm("DeleteMovie", "Director"))
+    {
+      @Html.Hidden("joinId", @join.MovieDirectorId)
+      <input type="submit" value="Delete"/>
+    }
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Add a Movie", "AddMovie", new { id = Model.DirectorId })</p>
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Edit Director", "Edit", new { id = Model.DirectorId })</p>
+<p>@Html.ActionLink("Delete Director", "Delete", new { id = Model.DirectorId })</p>

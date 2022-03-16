@@ -30,6 +30,20 @@ namespace Filmography.Migrations
                     b.ToTable("Actors");
                 });
 
+            modelBuilder.Entity("Filmography.Models.Director", b =>
+                {
+                    b.Property<int>("DirectorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("DirectorName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("DirectorId");
+
+                    b.ToTable("Directors");
+                });
+
             modelBuilder.Entity("Filmography.Models.Movie", b =>
                 {
                     b.Property<int>("MovieId")
@@ -47,9 +61,9 @@ namespace Filmography.Migrations
                     b.ToTable("Movies");
                 });
 
-            modelBuilder.Entity("Filmography.Models.MovieWiki", b =>
+            modelBuilder.Entity("Filmography.Models.MovieActor", b =>
                 {
-                    b.Property<int>("MovieWikiId")
+                    b.Property<int>("MovieActorId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -59,16 +73,37 @@ namespace Filmography.Migrations
                     b.Property<int>("MovieId")
                         .HasColumnType("int");
 
-                    b.HasKey("MovieWikiId");
+                    b.HasKey("MovieActorId");
 
                     b.HasIndex("ActorId");
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("MovieWiki");
+                    b.ToTable("MovieActor");
                 });
 
-            modelBuilder.Entity("Filmography.Models.MovieWiki", b =>
+            modelBuilder.Entity("Filmography.Models.MovieDirector", b =>
+                {
+                    b.Property<int>("MovieDirectorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("DirectorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
+                    b.HasKey("MovieDirectorId");
+
+                    b.HasIndex("DirectorId");
+
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("MovieDirector");
+                });
+
+            modelBuilder.Entity("Filmography.Models.MovieActor", b =>
                 {
                     b.HasOne("Filmography.Models.Actor", "Actor")
                         .WithMany("JoinEntities")
@@ -87,7 +122,31 @@ namespace Filmography.Migrations
                     b.Navigation("Movie");
                 });
 
+            modelBuilder.Entity("Filmography.Models.MovieDirector", b =>
+                {
+                    b.HasOne("Filmography.Models.Director", "Director")
+                        .WithMany("JoinEntities")
+                        .HasForeignKey("DirectorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Filmography.Models.Movie", "Movie")
+                        .WithMany("JoinEntities2")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Director");
+
+                    b.Navigation("Movie");
+                });
+
             modelBuilder.Entity("Filmography.Models.Actor", b =>
+                {
+                    b.Navigation("JoinEntities");
+                });
+
+            modelBuilder.Entity("Filmography.Models.Director", b =>
                 {
                     b.Navigation("JoinEntities");
                 });
@@ -95,6 +154,8 @@ namespace Filmography.Migrations
             modelBuilder.Entity("Filmography.Models.Movie", b =>
                 {
                     b.Navigation("JoinEntities");
+
+                    b.Navigation("JoinEntities2");
                 });
 #pragma warning restore 612, 618
         }
