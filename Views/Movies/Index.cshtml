@@ -1,0 +1,20 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Filmography.Models;
+@model List<Filmography.Models.Movie>;
+
+<h1>Films</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No films have been added yet!</h3>
+} 
+
+@foreach (Movie movie in Model)
+{
+  <li>@Html.ActionLink($"{movie.MovieName}", "Details", new { id = movie.MovieId })</li>
+}
+
+<p>@Html.ActionLink("Add new Film", "Create")</p>

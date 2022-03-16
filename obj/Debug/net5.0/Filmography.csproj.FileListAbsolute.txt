@@ -58,3 +58,4 @@ C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Shared\Footer.cs
 C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Filmography.RazorTargetAssemblyInfo.cs
 C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Filmography.Views.pdb
+C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Movies\Details.cshtml.g.cs

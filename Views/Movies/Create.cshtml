@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Filmography.Models.Movie
+
+<h4>Add a new movie</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.MovieName)
+  @Html.TextBoxFor(model => model.MovieName)
+  <input type="submit" value="Add new movie" />
+}
+<p>@Html.ActionLink("Show all movie", "Index")</p>

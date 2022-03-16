@@ -1,0 +1,20 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Filmography.Models;
+@model List<Filmography.Models.Director>;
+
+<h1>Directors</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No directors have been added yet!</h3>
+} 
+
+@foreach (Director director in Model)
+{
+  <li>@Html.ActionLink($"{director.DirectorName}", "Details", new { id = director.DirectorId })</li>
+}
+
+<p>@Html.ActionLink("Add new director", "Create")</p>

@@ -1,0 +1,20 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Filmography.Models;
+@model List<Filmography.Models.Composer>;
+
+<h1>Composers</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No composers have been added yet!</h3>
+} 
+
+@foreach (Composer composer in Model)
+{
+  <li>@Html.ActionLink($"{composer.ComposerName}", "Details", new { id = composer.ComposerId })</li>
+}
+
+<p>@Html.ActionLink("Add new composer", "Create")</p>
