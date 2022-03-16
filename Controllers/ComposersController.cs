@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Filmography.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace Filmography.Controllers
 {
@@ -22,12 +24,12 @@ namespace Filmography.Controllers
 
     public ActionResult Create()
     {
-      ViewBag.ComposerId = new SelectList(_db.Composer, "ComposerId", "ComposerName");
+      ViewBag.MovieId = new SelectList(_db.Movies, "MovieId", "MovieName");
       return View();
     }
 
     [HttpPost]
-    public ActionResult Create(Composer composer, int ComposerId)
+    public ActionResult Create(Composer composer, int MovieId)
     {
       _db.Composers.Add(composer);
       _db.SaveChanges();
@@ -50,7 +52,7 @@ namespace Filmography.Controllers
 
     public ActionResult Edit(int id)
     {
-      var thisComposer = _db.Composer.FirstOrDefault(composer => composer.ComposerId == id);
+      var thisComposer = _db.Composers.FirstOrDefault(composer => composer.ComposerId == id);
       ViewBag.MovieId = new SelectList(_db.Movies, "MovieId", "MovieName");
       return View(thisComposer);
     }
@@ -95,7 +97,7 @@ namespace Filmography.Controllers
     public ActionResult DeleteConfirmed(int id)
     {
       var thisComposer = _db.Composers.FirstOrDefault(composer => composer.ComposerId == id);
-      _db.Items.Remove(thisComposer);
+      _db.Composers.Remove(thisComposer);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

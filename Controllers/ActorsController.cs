@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Filmography.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace Filmography.Controllers
 {
@@ -62,7 +64,7 @@ namespace Filmography.Controllers
       {
         _db.MovieWiki.Add(new MovieWiki() { MovieId = MovieId, ActorId = actor.ActorId });
       }
-      _db.Entry(item).State = EntityState.Modified;
+      _db.Entry(actor).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
@@ -71,7 +73,7 @@ namespace Filmography.Controllers
     {
       var thisActor = _db.Actors.FirstOrDefault(actor => actor.ActorId == id);
       ViewBag.MovieId = new SelectList(_db.Movies, "MovieId", "MName");
-      return View(thisItem);
+      return View(thisActor);
     }
 
     [HttpPost]
