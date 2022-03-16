@@ -20,5 +20,54 @@ namespace Filmography.Controllers
       return View(_db.Movies.ToList());
     }
 
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Movie movie)
+    {
+      _db.Movies.Add(movie);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult Details(int id)
+    {
+      var thisMovie = _db.Movies
+        .Include(movie => movie.JoinEntities)
+        .ThenInclude(join => join.Movie)
+        .FirstOrDefault(movie => movie.MovieId == id);
+      return View(thisMovie);
+    } 
+
+    public ActionResult Edit(int id)
+    {
+      var thisMovie = _db.Movies.FirstOrDefault(movie => movie.MovieId == id);
+      return View(thisMovie);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Movie movie)
+    {
+      _db.Entry(movie).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+    public ActionResult Delete(int id)
+    {
+      var thisMovie = _db.Movies.FirstOrDefault(movie => movie.MovieId == id);
+      return View(thisMovie);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var thisMovie =_db.Movies.FirstOrDefault(movie => movie.MovieId == id);
+      _db.Movies.Remove(thisMovie);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
