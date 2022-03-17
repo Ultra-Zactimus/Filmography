@@ -29,19 +29,19 @@ Developer Note -- <em>You do not need to type in `$` into the terminal, the term
 * Run "$ `touch appsettings.json`"
 * Run "$ `code .`" to open the project in VS Code. If you do not have VS Code please visit their website: https://code.visualstudio.com/
 * Add in this code to the `appsettings.json` file inside `VS Code`:
-`
+
   {
     "ConnectionStrings": {
-        "DefaultConnection": "Server=localhost;Port=3306;database=[YOUR_MYSQL_PROJECTNAME];uid=root;pwd=[YOUR-PASSWORD-HERE];"
+        "DefaultConnection": "Server=localhost;Port=3306;database=filmography;uid=root;pwd=[YOUR-PASSWORD-HERE];"
     }
   }
-`
+
 * Create a gitignore file. Run "$ `touch .gitignore`" on the top level of the project.
 * Inside of `VS Code` type in `appsettings.json` into the gitignore file. This will keep your password safe.
 * Change the password to be the same password as your mySQL Server Password. If you do not have mySQL server please visit their website: https://www.mysql.com/
 
 
-Developer Note -- <em>You do not need the square brackets around your password, that is only to demonstate where your password needs to be. For further instructions please scroll down below for a more detailed setup in the SQL Setup section</em>
+Developer Note -- <em>You do not need the square brackets around the password field in the appsettings.json file, they are included only to demonstate where the password needs to be.</em>
 
 * Run "$ `dotnet add package Microsoft.EntityFrameworkCore -v 5.0.0`"
 * Run "$ `dotnet add package Pomelo.EntityFrameworkCore.MySql -v 5.0.0-alpha.2`"
