@@ -1,45 +1,57 @@
-# _Pierre's Bakery Statistics: My Ninth Code Review at Epicodus_
+# _Filmography: An Internet Movie Database_
 
-#### By Zachary Green
+#### By Tiffany Rodrigo, Drew Henderson and Zachary Green
 
-#### _This is a project that demonstrates using `ASP.Net Core MVC` to build out a project using Razor inline code in HTML and also seperation of classes, controllers for HTML Get and Post functionality and the use of Unit Testing with VSCode. This project was possible under the guidance of Epicodus https://www.epicodus.com/_
+#### _This is a project that demonstrates using Many-to-Many Relationships in mySQL using Microsoft Entity Framework. This project was possible under the guidance of Epicodus https://www.epicodus.com/_
 
 ## Technologies Used
 
 * `C#`
-* `MSTest`
+* `Microsoft Entity Framework`
 * `ASP.NET Core MVC`
 * `Bootstrap`
 * `CSS`
 
 ## Description
 
-_Pierre is running a sucessful bakery and his pastries and bread are flying off the shelf. However, he needs a way to keep track of all his clients and how much each one is purchasing in a given day. This application is setup like how a website Database might function. The user can enter clients into the system and then click on their name to add extra details about that client to be stored and revisited later_
+_Users can add movies, actors, directors or compaosers and tie their relationships together so that the details page will display information about all the actors part of a movie etc. Porject uses CRUD (Create, Read, Update, Destroy) functionality for the pages_
 
 ## Setup/Installation Requirements
 
-`Running the project in a browser`
+<strong><em>Requirements for Running the Project in a Browser</em></strong>
+#
 
-* Visit https://github.com/Ultra-Zactimus/BakeryStats.Solution
+Developer Note -- <em>You do not need to type in `$` into the terminal, the terminal starts with `$` on GitBash and `%` on Bash.</em>
+
+* Visit https://github.com/Ultra-Zactimus/HairSalon.Solution
 * Clone this repository to your desktop.
-* Navigate to the `Bakery.Solution` production folder in the terminal and run $"`code .`" to open the project in `VS Code`.
-* If you do not have `VS Code` please visit their website: https://code.visualstudio.com/ and follow their installation instructions.
-* In `VS Code` open the `Terminal` and Navigate to `BakeryStats` folder.
+* Navigate to the top level directory in your terminal.
+* Run "$ `touch appsettings.json`"
+* Run "$ `code .`" to open the project in VS Code. If you do not have VS Code please visit their website: https://code.visualstudio.com/
+* Add in this code to the `appsettings.json` file inside `VS Code`:
+  `{
+    "ConnectionStrings": {
+        "DefaultConnection": "Server=localhost;Port=3306;database=[YOUR_MYSQL_PROJECTNAME];uid=root;pwd=[YOUR-PASSWORD-HERE];"
+    }
+  }`
+
+* Create a gitignore file. Run "$ `touch .gitignore`" on the top level of the project.
+* Inside of `VS Code` type in `appsettings.json` into the gitignore file. This will keep your password safe.
+* Change the password to be the same password as your mySQL Server Password. If you do not have mySQL server please visit their website: https://www.mysql.com/
+
+
+Developer Note -- <em>You do not need the square brackets around your password, that is only to demonstate where your password needs to be. For further instructions please scroll down below for a more detailed setup in the SQL Setup section</em>
+
+* Run "$ `dotnet add package Microsoft.EntityFrameworkCore -v 5.0.0`"
+* Run "$ `dotnet add package Pomelo.EntityFrameworkCore.MySql -v 5.0.0-alpha.2`"
+* Run "$ `dotnet add package Microsoft.EntityFrameworkCore.Proxies -v 5.0.0`"
 * Run "$ `dotnet restore`" to restore the bin and obj folders.
-* Run "$ `dotnet build`" to build the project.
-* Run "$ `dotnet run`" or "$ `dotnet watch run`" to create a LocalHost live server inside the `VS Code` Terminal.
-* Program will not launch immediately. You will have to click on `LocalHost:5000` to view the page in the browser.
+* Run "$ `dotnet tool install --global dotnet-ef --version 5.0.1`"
+* Run "$ `dotnet build`" to build the project.`"
+* Run "$ `dotnet ef migrations add Initial`"
+* Run "$ `dotnet ef database update`"
+* Run "$ `dotnet watch run`" to launch a LocalHost. Click on `LocalHost:5000`. You may have to hold Ctrl or Command when clicking it to get it to open in your internet broswer.
 
-`Running the tests for the project`
-
-* In the terminal in VS Code, navigate to BakertStats.Tests folder.
-* Run "$ `dotnet restore`" to rebuild the necessary `NuGet` dependancies for `MSTest`.
-* Then Run "$ `dotnet test`", this will show how many tests and whether they passed or failed. By default the tests should be all in passing. If you would like to try out what a failure looks like, open either `OrderTests.cs` or `VendorTests.cs` in `VS Code`.
-* Pick any test to make change to that you would like with the `[TestMethod]` above it. Inside the `Assert.AreEqual()`, change the first value to something else.
-* Now run "$ `dotnet test`". The message should appear in Red and tell you that it `Expected:` the value you have enter, but the `Actual:` value is not the same.
-* Please make suer to change any changes made back to what they were before trying to build the project again to avoid errors.
-
---Developer Note--<em>You do not need to type in $ into the terminal, the terminal starts with $ on GitBash and % on Bash.</em>
 
 ## Known Bugs
 
@@ -49,4 +61,4 @@ No known bugs at this time
 
 MIT
 
-Copyright © 2022 Zachary Green
+Copyright © 2022 Tiffany Rodrigo, Drew Henderson and Zachary Green
