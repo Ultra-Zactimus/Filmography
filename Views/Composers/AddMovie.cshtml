@@ -1,0 +1,32 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Filmography.Models.Composer
+
+<header>
+  <p><strong>@Html.ActionLink("ADD NEW MOVIE", "Create", "Movies")</strong></p>
+  <p><strong>@Html.ActionLink("COMPOSERS", "Index")</strong></p>
+</header>
+
+<h2>Add a movie</h2>
+
+<h4>Add a movie to this composer: @Html.DisplayFor(model => model.ComposerName)</h4>
+
+@if(ViewBag.movieList != 0)
+{
+  @using (Html.BeginForm())
+  {
+    @Html.HiddenFor(model => model.ComposerId)
+
+    @Html.Label("Select movie")
+    @Html.DropDownList("MovieId")
+
+    <input type="submit" value="Save" />
+  }
+}
+else
+{
+  <p>There are no movies to add to this composer</p>
+}
+<div id="get-low"></div>

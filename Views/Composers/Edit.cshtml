@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Filmography.Models.Composer
+
+<header>
+  <p><strong>@Html.ActionLink("COMPOSERS", "Index")</strong></p>
+</header>
+
+<h2>Edit</h2>
+
+<h4>Edit this composer: @Html.DisplayFor(model => model.ComposerName)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.ComposerId)
+
+  @Html.LabelFor(model => model.ComposerName)
+  @Html.EditorFor(model => model.ComposerName)
+
+  @Html.Label("Select Movie")
+  @Html.DropDownList("MovieId")
+
+  <input type="submit" value="Save" />
+}
+<div id="get-low"></div>

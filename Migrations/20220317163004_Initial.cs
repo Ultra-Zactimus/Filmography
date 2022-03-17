@@ -21,6 +21,19 @@ namespace Filmography.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Composers",
+                columns: table => new
+                {
+                    ComposerId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ComposerName = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Composers", x => x.ComposerId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Directors",
                 columns: table => new
                 {
@@ -48,51 +61,39 @@ namespace Filmography.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MovieActor",
+                name: "MovieWiki",
                 columns: table => new
                 {
-                    MovieActorId = table.Column<int>(type: "int", nullable: false)
+                    MovieWikiId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     MovieId = table.Column<int>(type: "int", nullable: false),
-                    ActorId = table.Column<int>(type: "int", nullable: false)
+                    ActorId = table.Column<int>(type: "int", nullable: true),
+                    DirectorId = table.Column<int>(type: "int", nullable: true),
+                    ComposerId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MovieActor", x => x.MovieActorId);
+                    table.PrimaryKey("PK_MovieWiki", x => x.MovieWikiId);
                     table.ForeignKey(
-                        name: "FK_MovieActor_Actors_ActorId",
+                        name: "FK_MovieWiki_Actors_ActorId",
                         column: x => x.ActorId,
                         principalTable: "Actors",
                         principalColumn: "ActorId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_MovieActor_Movies_MovieId",
-                        column: x => x.MovieId,
-                        principalTable: "Movies",
-                        principalColumn: "MovieId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "MovieDirector",
-                columns: table => new
-                {
-                    MovieDirectorId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    MovieId = table.Column<int>(type: "int", nullable: false),
-                    DirectorId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MovieDirector", x => x.MovieDirectorId);
+                        name: "FK_MovieWiki_Composers_ComposerId",
+                        column: x => x.ComposerId,
+                        principalTable: "Composers",
+                        principalColumn: "ComposerId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_MovieDirector_Directors_DirectorId",
+                        name: "FK_MovieWiki_Directors_DirectorId",
                         column: x => x.DirectorId,
                         principalTable: "Directors",
                         principalColumn: "DirectorId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_MovieDirector_Movies_MovieId",
+                        name: "FK_MovieWiki_Movies_MovieId",
                         column: x => x.MovieId,
                         principalTable: "Movies",
                         principalColumn: "MovieId",
@@ -100,36 +101,36 @@ namespace Filmography.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_MovieActor_ActorId",
-                table: "MovieActor",
+                name: "IX_MovieWiki_ActorId",
+                table: "MovieWiki",
                 column: "ActorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MovieActor_MovieId",
-                table: "MovieActor",
-                column: "MovieId");
+                name: "IX_MovieWiki_ComposerId",
+                table: "MovieWiki",
+                column: "ComposerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MovieDirector_DirectorId",
-                table: "MovieDirector",
+                name: "IX_MovieWiki_DirectorId",
+                table: "MovieWiki",
                 column: "DirectorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MovieDirector_MovieId",
-                table: "MovieDirector",
+                name: "IX_MovieWiki_MovieId",
+                table: "MovieWiki",
                 column: "MovieId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "MovieActor");
-
-            migrationBuilder.DropTable(
-                name: "MovieDirector");
+                name: "MovieWiki");
 
             migrationBuilder.DropTable(
                 name: "Actors");
+
+            migrationBuilder.DropTable(
+                name: "Composers");
 
             migrationBuilder.DropTable(
                 name: "Directors");

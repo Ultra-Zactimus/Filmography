@@ -4,32 +4,30 @@
 
 @model Filmography.Models.Actor
 
-<h2>Actor Details</h2>
-<hr />
-<h3>@Html.DisplayNameFor(model => model.ActorName): @Html.DisplayFor(model => model.ActorName)</h3>
+<header>
+  <p><strong>@Html.ActionLink("ACTORS", "Index")</strong></p>
+  <p id="list1"><strong>@Html.ActionLink("EDIT ACTOR", "Edit", new { id = Model.ActorId })</strong></p>
+  <p id="list2"><strong>@Html.ActionLink("DELETE ACTOR", "Delete", new { id = Model.ActorId })</strong></p>
+</header>
 
-@if(@Model.JoinEntities.Count == 0)
-{
-  <p>This actor has no movies to be added to yet</p>
-}
-else
-{
+<h1>Actor Details</h1>
+<hr />
+<h3>Name:</h3>
+<p><strong><em>@Html.DisplayFor(model => model.ActorName)</em></strong></p>
+
   <h4>Movies this actor was in:</h4>
   <ul>
   @foreach(var join in Model.JoinEntities)
   {
-    <li>@join.Movie.MovieName</li>
+    <li><strong><em>@Html.ActionLink($"{@join.Movie.MovieName}", "Details", "Movies", new { id = join.Movie.MovieId })</em></strong></li>
     @using (Html.BeginForm("DeleteMovie", "Actors"))
     {
-      @Html.Hidden("joinId", @join.MovieActorId)
-      <input type="submit" value="Delete"/>
+      @Html.Hidden("joinId", @join.MovieWikiId)
+      <input type="submit" value="Delete" class="btn btn-warning"/>
     }
   }
   </ul>
-}
+<br>
 
 <p>@Html.ActionLink("Add a Movie", "AddMovie", new { id = Model.ActorId })</p>
-
-<p>@Html.ActionLink("Back to list", "Index")</p>
-<p>@Html.ActionLink("Edit Actor", "Edit", new { id = Model.ActorId })</p>
-<p>@Html.ActionLink("Delete Actor", "Delete", new { id = Model.ActorId })</p>
+<div id="get-low"></div>

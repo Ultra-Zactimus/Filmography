@@ -4,6 +4,10 @@
 
 @model Filmography.Models.Movie
 
+<header>
+  <p><strong>@Html.ActionLink("MOVIES", "Index")</strong></p>
+</header>
+
 <h2>Edit</h2>
 
 <h4>Edit this film's details: @Html.DisplayFor(model => model.MovieName)</h4>
@@ -20,4 +24,4 @@
 
   <input type="submit" value="Save" />
 }
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<div id="get-low"></div>

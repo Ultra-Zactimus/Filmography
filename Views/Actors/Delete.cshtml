@@ -2,6 +2,10 @@
   Layout = "_Layout";
 }
 
+<header>
+  <p><strong>@Html.ActionLink("ACTORS", "Index")</strong></p>
+</header>
+
 @model Filmography.Models.Actor
 <h2>Are you sure you want to delete this?</h2>
 
@@ -10,4 +14,4 @@
 {
   <input type="submit" value="Delete" />
 }
-@Html.ActionLink("Back to List", "Index")
+<div id="get-low"></div>

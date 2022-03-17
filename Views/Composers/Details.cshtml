@@ -1,0 +1,33 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Filmography.Models.Composer
+
+<header>
+  <p><strong>@Html.ActionLink("COMPOSERS", "Index")</strong></p>
+  <p><strong>@Html.ActionLink("EDIT COMPOSER", "Edit", new { id = Model.ComposerId })</strong></p>
+  <p><strong>@Html.ActionLink("DELETE COMPOSER", "Delete", new { id = Model.ComposerId })</strong></p>
+</header>
+
+<h1>Composer Details</h1>
+<hr />
+<h3>Name:</h3>
+<p><strong><em>@Html.DisplayFor(model => model.ComposerName)</em></strong></p>
+
+<h4>Movies composed:</h4>
+<ul>
+  @foreach(var join in Model.JoinEntities)
+  {
+    <li><strong><em>@Html.ActionLink($"{@join.Movie.MovieName}", "Details", "Movies", new { id = join.Movie.MovieId })</em></strong></li>
+    @using (Html.BeginForm("DeleteMovie", "Composer"))
+    {
+      @Html.Hidden("joinId", @join.MovieWikiId)
+      <input type="submit" value="Delete" class="btn btn-warning"/>
+    }
+  }
+</ul>
+<br>
+
+<p>@Html.ActionLink("Add a Movie", "AddMovie", new { id = Model.ComposerId })</p>
+<div id="get-low"></div>

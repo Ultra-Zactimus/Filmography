@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Filmography.Models.Movie
+
+<header>
+  <p><strong>@Html.ActionLink("Back to list", "Index")</strong></p>
+</header>
+
+<h2>Add a director</h2>
+
+<h4>Add a director to this task: @Html.DisplayFor(model => model.MovieName)</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.MovieId)
+
+    @Html.Label("Select director")
+    @Html.DropDownList("DirectorId")
+
+    <input type="submit" value="Save" />
+}
+<div id="get-low"></div>

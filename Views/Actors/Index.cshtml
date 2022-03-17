@@ -5,6 +5,10 @@
 @using Filmography.Models;
 @model List<Filmography.Models.Actor>;
 
+<header>
+  <p><strong>@Html.ActionLink("ADD NEW ACTOR", "Create")</strong></p>
+</header>
+
 <h1>Actors</h1>
 
 @if (@Model.Count == 0)
@@ -14,7 +18,6 @@
 
 @foreach (Actor actor in Model)
 {
-  <li>@Html.ActionLink($"{actor.ActorName}", "Details", new { id = actor.ActorId })</li>
+  <li><strong><em>@Html.ActionLink($"{actor.ActorName}", "Details", new { id = actor.ActorId })</em></strong></li>
 }
-
-<p>@Html.ActionLink("Add new actor", "Create")</p>
+<div id="get-low"></div>

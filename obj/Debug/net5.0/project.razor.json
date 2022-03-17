@@ -15619,8 +15619,18 @@
   "RootNamespace": "Filmography",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\ultra\\desktop\\Filmography\\Views\\Composers\\Index.cshtml",
+      "TargetPath": "Views\\Composers\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\ultra\\desktop\\Filmography\\Views\\Shared\\Footer.cshtml",
       "TargetPath": "Views\\Shared\\Footer.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ultra\\desktop\\Filmography\\Views\\Composers\\Edit.cshtml",
+      "TargetPath": "Views\\Composers\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15636,6 +15646,11 @@
     {
       "FilePath": "c:\\Users\\ultra\\desktop\\Filmography\\Views\\Directors\\Details.cshtml",
       "TargetPath": "Views\\Directors\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ultra\\desktop\\Filmography\\Views\\Composers\\Details.cshtml",
+      "TargetPath": "Views\\Composers\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15669,6 +15684,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\ultra\\desktop\\Filmography\\Views\\Movies\\AddDirector.cshtml",
+      "TargetPath": "Views\\Movies\\AddDirector.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\ultra\\desktop\\Filmography\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
@@ -15699,6 +15719,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\ultra\\desktop\\Filmography\\Views\\Composers\\Create.cshtml",
+      "TargetPath": "Views\\Composers\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ultra\\desktop\\Filmography\\Views\\Composers\\AddMovie.cshtml",
+      "TargetPath": "Views\\Composers\\AddMovie.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\ultra\\desktop\\Filmography\\Views\\Movies\\Delete.cshtml",
       "TargetPath": "Views\\Movies\\Delete.cshtml",
       "FileKind": "mvc"
@@ -15716,6 +15746,11 @@
     {
       "FilePath": "c:\\Users\\ultra\\desktop\\Filmography\\Views\\Actors\\Edit.cshtml",
       "TargetPath": "Views\\Actors\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ultra\\desktop\\Filmography\\Views\\Composers\\Delete.cshtml",
+      "TargetPath": "Views\\Composers\\Delete.cshtml",
       "FileKind": "mvc"
     }
   ],

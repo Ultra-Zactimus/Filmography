@@ -4,6 +4,16 @@ body
   background-color: rgb(233, 202, 144);
 }
 
+#push
+{
+  margin-top: 100px;
+}
+
+#get-low
+{
+  margin-bottom:20px;
+}
+
 header
 {
   width: 100%;
@@ -22,14 +32,14 @@ footer
   background-color: rgb(231, 178, 178);
 }
 
-#stylist-list, #edit, #client-info
+#list1, #edit, #info2
 {
   display: inline-block;
   width: 175px;
   padding: 5px;
 }
 
-#client-list, #delete, #stylist-info
+#list2, #delete, #info1
 {
   display: inline-block;
   width: 175px;
@@ -39,4 +49,9 @@ footer
 #warning
 {
   color: red;
+}
+
+.btn-warning
+{
+  padding: 2px;
 }

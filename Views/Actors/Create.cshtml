@@ -4,6 +4,10 @@
 
 @model Filmography.Models.Actor
 
+<header>
+  <p><strong>@Html.ActionLink("ACTORS", "Index")</strong></p>
+</header>
+
 <h4>Add an Actor:</h4>
 @using (Html.BeginForm())
 {
@@ -11,4 +15,4 @@
   @Html.TextBoxFor(model => model.ActorName)
   <input type="submit" value="Add new Actor" />
 }
-<p>@Html.ActionLink("Back", "Index")</p>
+<div id="get-low"></div>

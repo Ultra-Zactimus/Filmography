@@ -4,6 +4,11 @@
 
 @model Filmography.Models.Director
 
+<header>
+  <p id="list1"><strong>@Html.ActionLink("ADD NEW MOVIE", "Create", "Movies")</strong></p>
+  <p id="list2"><strong>@Html.ActionLink("DIRECTORS", "Index")</strong></p>
+</header>
+
 <h2>Add a movie</h2>
 
 <h4>Add a movie to this director: @Html.DisplayFor(model => model.DirectorName)</h4>
@@ -24,6 +29,4 @@ else
 {
   <p>There are no movies to add to this director</p>
 }
-
-<p>@Html.ActionLink("Add new Film", "Create", "Movies")</p>
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<div id="get-low"></div>

@@ -4,6 +4,10 @@
 
 @model Filmography.Models.Movie
 
+<header>
+  <p><strong>@Html.ActionLink("MOVIES", "Index")</strong></p>
+</header>
+
 <h4>Add a new movie</h4>
 @using (Html.BeginForm())
 {
@@ -14,4 +18,4 @@
   @Html.TextBoxFor(model => model.Description)
   <input type="submit" value="Add new movie" />
 }
-<p>@Html.ActionLink("Show all movie", "Index")</p>
+<div id="get-low"></div>

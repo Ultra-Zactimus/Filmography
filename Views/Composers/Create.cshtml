@@ -1,0 +1,18 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Filmography.Models.Composer
+
+<header>
+  <p><strong>@Html.ActionLink("COMPOSERS", "Index")</strong></p>
+</header>
+
+<h4>Add composer:</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.ComposerName)
+  @Html.TextBoxFor(model => model.ComposerName)
+  <input type="submit" value="Add new Actor" />
+}
+<div id="get-low"></div>

@@ -4,26 +4,53 @@
 
 @model Filmography.Models.Movie;
 
-<h2>Movie Details</h2>
+<header>
+  <p><strong>@Html.ActionLink("MOVIES", "Index")</strong></p>
+  <p id="list1"><strong>@Html.ActionLink("EDIT MOVIE", "Edit", new { id = Model.MovieId })</strong></p>
+  <p id="list2"><strong>@Html.ActionLink("DELETE MOVIE", "Delete", new { id = Model.MovieId })</strong></p>
+</header>
+
+<h1>Movie Details</h1>
 <hr />
-<h3>@Html.DisplayNameFor(model => model.MovieName): @Html.DisplayFor(model => model.MovieName)</h3>
-<h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
+<h3>Name of Film:</h3>
+<p><strong><em>@Html.DisplayFor(model => model.MovieName)</em></strong></p>
+<h3>Synopsis:</h3>
+<p><strong><em>@Html.DisplayFor(model => model.Description)</em></strong></p>
+<h3>The People who helped create it:</h3>
 
-@if(@Model.JoinEntities.Count == 0)
+@foreach(var join in Model.JoinEntities)
 {
-  <p>This movie has not been added to the Database yet</p>
-}
-else
-{
-  <h4>The actors this film contains:</h4>
-  <ul>
-  @foreach(var join in Model.JoinEntities)
+  if(join.Actor != null )
   {
-    <li>@Html.ActionLink($"{@join.Actor.ActorName}", "Details", "Actors", new { id = join.Actor.ActorId })</li>
+      <li>Actors: <strong><em>@Html.ActionLink($"{@join.Actor.ActorName}", "Details", "Actors", new { id = join.Actor.ActorId })</em></strong></li>
+    @using (Html.BeginForm("DeleteJoin", "Movies"))
+    {
+      @Html.Hidden("joinId", @join.MovieWikiId)
+      <input type="submit" value="Delete" class="btn btn-warning"/>
+    }
   }
-  </ul>
+  else if(join.Director != null )
+  {
+    <li>Director: <strong><em>@Html.ActionLink($"{@join.Director.DirectorName}", "Details", "Directors", new { id = join.Director.DirectorId })</em></strong></li>
+    @using (Html.BeginForm("DeleteJoin", "Movies"))
+    {
+      @Html.Hidden("joinId", @join.MovieWikiId)
+      <input type="submit" value="Delete" class="btn btn-warning"/>
+    }
+  }
+  else if(join.Composer != null )
+  {
+    <li>Composer: <strong><em>@Html.ActionLink($"{@join.Composer.ComposerName}", "Details", "Composers", new { id = join.Composer.ComposerId })</em></strong></li>
+    @using (Html.BeginForm("DeleteJoin", "Movies"))
+    {
+      @Html.Hidden("joinId", @join.MovieWikiId)
+      <input type="submit" value="Delete" class="btn btn-warning"/>
+    }
+  }
 }
+<br>
 
-<p>@Html.ActionLink("Back to  movie list", "Index")</p>
-<p>@Html.ActionLink("Edit Movie", "Edit", new { id = Model.MovieId })</p>
-<p>@Html.ActionLink("Delete Movie", "Delete", new { id = Model.MovieId })</p>
+<p><strong>@Html.ActionLink("ADD A DIRECTOR", "AddDirector", new { id = Model.MovieId })</strong></p>
+<p><strong>@Html.ActionLink("ADD A COMPOSER", "AddComposer", new { id = Model.MovieId })</strong></p>
+<p><strong>@Html.ActionLink("ADD AN ACTOR", "AddActor", new { id = Model.MovieId })</strong></p>
+<div id="get-low"></div>

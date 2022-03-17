@@ -33,11 +33,6 @@ namespace Filmography.Controllers
     {
       _db.Actors.Add(actor);
       _db.SaveChanges();
-      if (MovieId != 0)
-      {
-        _db.MovieActor.Add(new MovieActor() { MovieId = MovieId, ActorId = actor.ActorId });
-        _db.SaveChanges();
-      }
       return RedirectToAction("Index");
     }
 
@@ -62,7 +57,7 @@ namespace Filmography.Controllers
     {
       if (MovieId != 0)
       {
-        _db.MovieActor.Add(new MovieActor() { MovieId = MovieId, ActorId = actor.ActorId });
+        _db.MovieWiki.Add(new MovieWiki() { MovieId = MovieId, ActorId = actor.ActorId });
       }
       _db.Entry(actor).State = EntityState.Modified;
       _db.SaveChanges();
@@ -72,16 +67,15 @@ namespace Filmography.Controllers
     public ActionResult AddMovie(int id)
     {
       var thisActor = _db.Actors.FirstOrDefault(actor => actor.ActorId == id);
-      var thisMovieActor = _db.MovieActor.Where(MovieActor => MovieActor.ActorId == id);
+      var thisMovieWiki = _db.MovieWiki.Where(MovieWiki => MovieWiki.ActorId == id);
       
       List<Movie> movies = _db.Movies.ToList();
       List<Movie> movieList = _db.Movies.ToList();
-
-      foreach (MovieActor MovieActor in thisMovieActor)
+      foreach (MovieWiki MovieWiki in thisMovieWiki)
       {
         foreach(Movie movie in movies)
         {
-          if (movie.MovieId == MovieActor.MovieId)
+          if (movie.MovieId == MovieWiki.MovieId)
           {
             movieList.Remove(movie);
           }
@@ -90,11 +84,6 @@ namespace Filmography.Controllers
       ViewBag.MovieId = new SelectList(movieList, "MovieId", "MovieName");
       ViewBag.movieList = movieList.Count;
       return View(thisActor);
-
-
-      // var thisActor = _db.Actors.FirstOrDefault(actor => actor.ActorId == id);
-      // ViewBag.MovieId = new SelectList(_db.Movies, "MovieId", "MovieName");
-      // return View(thisActor);
     }
 
     [HttpPost]
@@ -102,7 +91,7 @@ namespace Filmography.Controllers
     {
       if (MovieId != 0)
       {
-        _db.MovieActor.Add(new MovieActor() { MovieId = MovieId, ActorId = actor.ActorId });
+        _db.MovieWiki.Add(new MovieWiki() { MovieId = MovieId, ActorId = actor.ActorId });
         _db.SaveChanges();
       }
       return RedirectToAction("Index");
@@ -126,8 +115,8 @@ namespace Filmography.Controllers
     [HttpPost]
     public ActionResult DeleteMovie(int joinId)
     {
-      var joinEntry = _db.MovieActor.FirstOrDefault(entry => entry.MovieActorId == joinId);
-      _db.MovieActor.Remove(joinEntry);
+      var joinEntry = _db.MovieWiki.FirstOrDefault(entry => entry.MovieWikiId == joinId);
+      _db.MovieWiki.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

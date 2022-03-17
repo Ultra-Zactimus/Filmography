@@ -3,6 +3,11 @@
 }
 
 @model Filmography.Models.Director
+
+<header>
+  <p><strong>@Html.ActionLink("DIRECTORS", "Index")</strong></p>
+</header>
+
 <h2>Are you sure you want to delete this?</h2>
 
 @Html.DisplayNameFor(model => model.DirectorName): @Html.DisplayFor(model => model.DirectorName)
@@ -10,4 +15,4 @@
 {
   <input type="submit" value="Delete" />
 }
-@Html.ActionLink("Back to List", "Index")
+<div id="get-low"></div>
