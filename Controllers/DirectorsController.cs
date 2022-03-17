@@ -43,7 +43,7 @@ namespace Filmography.Controllers
     public ActionResult Details(int id)
     {
       var thisDirector = _db.Directors
-          .Include(director => director.JoinEntities)
+          .Include(director => director.JoinEntities2)
           .ThenInclude(join => join.Movie)
           .FirstOrDefault(director => director.DirectorId == id);
       return View(thisDirector);
