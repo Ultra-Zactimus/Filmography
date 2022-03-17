@@ -23,18 +23,19 @@ _Users can add movies, actors, directors or compaosers and tie their relationshi
 
 Developer Note -- <em>You do not need to type in `$` into the terminal, the terminal starts with `$` on GitBash and `%` on Bash.</em>
 
-* Visit https://github.com/Ultra-Zactimus/HairSalon.Solution
+* Visit https://github.com/Ultra-Zactimus/Filmography
 * Clone this repository to your desktop.
 * Navigate to the top level directory in your terminal.
 * Run "$ `touch appsettings.json`"
 * Run "$ `code .`" to open the project in VS Code. If you do not have VS Code please visit their website: https://code.visualstudio.com/
 * Add in this code to the `appsettings.json` file inside `VS Code`:
-  `{
+`
+  {
     "ConnectionStrings": {
         "DefaultConnection": "Server=localhost;Port=3306;database=[YOUR_MYSQL_PROJECTNAME];uid=root;pwd=[YOUR-PASSWORD-HERE];"
     }
-  }`
-
+  }
+`
 * Create a gitignore file. Run "$ `touch .gitignore`" on the top level of the project.
 * Inside of `VS Code` type in `appsettings.json` into the gitignore file. This will keep your password safe.
 * Change the password to be the same password as your mySQL Server Password. If you do not have mySQL server please visit their website: https://www.mysql.com/
