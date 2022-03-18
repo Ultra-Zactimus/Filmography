@@ -1,4 +1,4 @@
-# _Filmography: An Internet Movie Database<p align="right"><img src="./MusicOrganizer/wwwroot/img/cd-icon.svg" alt="cd icon" width="50"></p>_
+# _Filmography: An Internet Movie Database ![cd icon]('~/img/cd-icon.svg')_
 
 #### By Tiffany Rodrigo, Drew Henderson and Zachary Green
 
