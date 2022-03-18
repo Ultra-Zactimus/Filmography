@@ -14,7 +14,8 @@
 </header>
 <div id="push"></div>
 <h1>Movie Details</h1>
-<hr />
+<hr  />
+<img src="~/img/popcorn.png" alt="popcorn" width="100">
 <h3>Name of Film:</h3>
 <p><strong><em>@Html.DisplayFor(model => model.MovieName)</em></strong></p>
 <h3>Synopsis:</h3>
@@ -23,9 +24,10 @@
 
 @foreach(var join in Model.JoinEntities)
 {
+  
   if(join.Actor != null )
   {
-      <li id="colors">Actors: <br><strong><em>@Html.ActionLink($"{@join.Actor.ActorName}", "Details", "Actors", new { id = join.Actor.ActorId })</em></strong></li>
+    <li id="colors">Actor:<br><strong><em>@Html.ActionLink($"{@join.Actor.ActorName}", "Details", "Actors", new { id = join.Actor.ActorId })</em></strong></li>
     @using (Html.BeginForm("DeleteJoin", "Movies"))
     {
       @Html.Hidden("joinId", @join.MovieWikiId)
@@ -34,7 +36,7 @@
   }
   else if(join.Director != null )
   {
-    <li id="colors">Director: <br><strong><em>@Html.ActionLink($"{@join.Director.DirectorName}", "Details", "Directors", new { id = join.Director.DirectorId })</em></strong></li>
+    <li id="colors">Director:<br><strong><em>@Html.ActionLink($"{@join.Director.DirectorName}", "Details", "Directors", new { id = join.Director.DirectorId })</em></strong></li>
     @using (Html.BeginForm("DeleteJoin", "Movies"))
     {
       @Html.Hidden("joinId", @join.MovieWikiId)
@@ -43,7 +45,7 @@
   }
   else if(join.Composer != null )
   {
-    <li id="colors">Composer: <br><strong><em>@Html.ActionLink($"{@join.Composer.ComposerName}", "Details", "Composers", new { id = join.Composer.ComposerId })</em></strong></li>
+    <li id="colors">Composer:<br><strong><em>@Html.ActionLink($"{@join.Composer.ComposerName}", "Details", "Composers", new { id = join.Composer.ComposerId })</em></strong></li>
     @using (Html.BeginForm("DeleteJoin", "Movies"))
     {
       @Html.Hidden("joinId", @join.MovieWikiId)
