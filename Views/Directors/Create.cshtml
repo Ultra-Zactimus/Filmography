@@ -7,7 +7,7 @@
 <header>
   <p><strong>@Html.ActionLink("DIRECTORS", "Index")</strong></p>
 </header>
-
+<div id="push"></div>
 <h4>Add Director:</h4>
 @using (Html.BeginForm())
 {
@@ -15,4 +15,3 @@
   @Html.TextBoxFor(model => model.DirectorName)
   <input type="submit" value="Add new Actor" />
 }
-<div id="get-low"></div>

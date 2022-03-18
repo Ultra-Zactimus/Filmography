@@ -11,17 +11,17 @@
 
 @if (@ViewBag.num != 0)
 {
-  <h2>Add a director</h2>
-  <h4>Add a director to this movie: @Html.DisplayFor(model => model.MovieName)</h4>
+  <h2>Add an actor</h2>
+  <h4>Add an actor to this movie: @Html.DisplayFor(model => model.MovieName)</h4>
   @using (Html.BeginForm())
   {
     @Html.Hidden("MovieId")
-    @Html.Label("Select director")
-    @Html.DropDownList("DirectorId")
+    @Html.Label("Select actor")
+    @Html.DropDownList("ActorId")
     <input type="submit" value="Save" />
   }
 }
 else
 {
-  <h3>There are no directors left, make a new director</h3>
+  <h3>There are no actors left, make a new actor</h3>
 }

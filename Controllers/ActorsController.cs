@@ -39,9 +39,9 @@ namespace Filmography.Controllers
     public ActionResult Details(int id)
     {
       var thisActor = _db.Actors
-          .Include(actor => actor.JoinEntities)
-          .ThenInclude(join => join.Movie)
-          .FirstOrDefault(actor => actor.ActorId == id);
+        .Include(actor => actor.JoinEntities)
+        .ThenInclude(join => join.Movie)
+        .FirstOrDefault(actor => actor.ActorId == id);
       return View(thisActor);
     }
 
@@ -66,16 +66,14 @@ namespace Filmography.Controllers
 
     public ActionResult AddMovie(int id)
     {
-      var thisActor = _db.Actors.FirstOrDefault(actor => actor.ActorId == id);
-      var thisMovieWiki = _db.MovieWiki.Where(MovieWiki => MovieWiki.ActorId == id);
-      
+      var wiki = _db.MovieWiki.Where(MovieWiki => MovieWiki.ActorId == id);      
       List<Movie> movies = _db.Movies.ToList();
       List<Movie> movieList = _db.Movies.ToList();
-      foreach (MovieWiki MovieWiki in thisMovieWiki)
+      foreach(MovieWiki w in wiki)
       {
         foreach(Movie movie in movies)
         {
-          if (movie.MovieId == MovieWiki.MovieId)
+          if (movie.MovieId == w.MovieId)
           {
             movieList.Remove(movie);
           }
@@ -83,6 +81,7 @@ namespace Filmography.Controllers
       }
       ViewBag.MovieId = new SelectList(movieList, "MovieId", "MovieName");
       ViewBag.movieList = movieList.Count;
+      var thisActor = _db.Actors.FirstOrDefault(actor => actor.ActorId == id);
       return View(thisActor);
     }
 
@@ -120,6 +119,5 @@ namespace Filmography.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
   }
 }

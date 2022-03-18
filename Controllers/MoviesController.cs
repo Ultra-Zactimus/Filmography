@@ -62,6 +62,7 @@ namespace Filmography.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
     public ActionResult Delete(int id)
     {
       var thisMovie = _db.Movies.FirstOrDefault(movie => movie.MovieId == id);
@@ -76,40 +77,110 @@ namespace Filmography.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
     
     public ActionResult AddDirector(int id)
     {
-      var thisDirector =_db.Directors.FirstOrDefault(director => director.DirectorId == id);
-      var thisMovieWiki = _db.MovieWiki.Where(MovieWiki => MovieWiki.MovieId == id);
-      
-      List<Movie> movies = _db.Movies.ToList();
-      List<Movie> movieList = _db.Movies.ToList();
-      foreach (MovieWiki movieDirector in thisMovieWiki)
+      var wiki = _db.MovieWiki.Where(m => m.MovieId == id);
+      List<Director> directors = _db.Directors.ToList();
+      List<Director> directorList = _db.Directors.ToList();
+      foreach(MovieWiki w in wiki)
       {
-        foreach(Movie movie in movies)
+        foreach(Director director in directors)
         {
-          if (movie.MovieId == movieDirector.MovieId)
+          if (director.DirectorId == w.DirectorId)
           {
-            movieList.Remove(movie);
+            directorList.Remove(director);
           }
         }
       }
-      ViewBag.MovieId = new SelectList(movieList, "MovieId", "MovieName");
-      ViewBag.movieList = movieList.Count;
-      ViewBag.DirectorId = new SelectList(_db.Directors, "DirectorId", "DirectorName");
-      return View(thisDirector);
+      ViewBag.DirectorId = new SelectList(directorList, "DirectorId", "DirectorName");
+      ViewBag.num = directorList.Count();
+      var thisMovie = _db.Movies.FirstOrDefault(movie => movie.MovieId == id);
+      return View(thisMovie);
     }
 
     [HttpPost]
-    public ActionResult AddDirector(Movie movie, int DirectorId)
+    public ActionResult AddDirector(int MovieId, int DirectorId)
     {
-      if(DirectorId != 0)
+      if (DirectorId != 0 && !_db.MovieWiki.Any(f => f.MovieId == MovieId && f.DirectorId == DirectorId))
       {
-      _db.MovieWiki.Add(new MovieWiki() { DirectorId = DirectorId, MovieId = movie.MovieId });
+        _db.MovieWiki.Add(new MovieWiki() { DirectorId = DirectorId, MovieId = MovieId });
+        _db.SaveChanges();
       }
+      return RedirectToAction("Details", new { id = MovieId });
+    }
+
+    public ActionResult AddActor(int id)
+    {
+      var wiki = _db.MovieWiki.Where(m => m.MovieId == id);
+      List<Actor> actors = _db.Actors.ToList();
+      List<Actor> actorList = _db.Actors.ToList();
+      foreach(MovieWiki w in wiki)
+      {
+        foreach(Actor actor in actors)
+        {
+          if (actor.ActorId == w.ActorId)
+          {
+            actorList.Remove(actor);
+          }
+        }
+      }
+      ViewBag.ActorId = new SelectList(actorList, "ActorId", "ActorName");
+      ViewBag.num = actorList.Count();
+      var thisMovie = _db.Movies.FirstOrDefault(movie => movie.MovieId == id);
+      return View(thisMovie);
+    }
+
+    [HttpPost]
+    public ActionResult AddActor(int MovieId, int ActorId)
+    {
+      if (ActorId != 0 && !_db.MovieWiki.Any(f => f.MovieId == MovieId && f.ActorId == ActorId))
+      {
+        _db.MovieWiki.Add(new MovieWiki() { ActorId = ActorId, MovieId = MovieId });
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Details", new { id = MovieId });
+    }
+
+    public ActionResult AddComposer(int id)
+    {
+      var wiki = _db.MovieWiki.Where(m => m.MovieId == id);
+      List<Composer> composers = _db.Composers.ToList();
+      List<Composer> composerList = _db.Composers.ToList();
+      foreach(MovieWiki w in wiki)
+      {
+        foreach(Composer composer in composers)
+        {
+          if (composer.ComposerId == w.ComposerId)
+          {
+            composerList.Remove(composer);
+          }
+        }
+      }
+      ViewBag.ComposerId = new SelectList(composerList, "ComposerId", "ComposerName");
+      ViewBag.num = composerList.Count();
+      var thisMovie = _db.Movies.FirstOrDefault(movie => movie.MovieId == id);
+      return View(thisMovie);
+    }
+
+    [HttpPost]
+    public ActionResult AddComposer(int MovieId, int ComposerId)
+    {
+      if (ComposerId != 0 && !_db.MovieWiki.Any(f => f.MovieId == MovieId && f.ComposerId == ComposerId))
+      {
+        _db.MovieWiki.Add(new MovieWiki() { ComposerId = ComposerId, MovieId = MovieId });
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Details", new { id = MovieId });
+    }
+
+    [HttpPost]
+    public ActionResult DeleteJoin(int joinId)
+    {
+      var joinEntry = _db.MovieWiki.FirstOrDefault(entry => entry.MovieWikiId == joinId);
+      _db.MovieWiki.Remove(joinEntry);
       _db.SaveChanges();
-      return RedirectToAction("Details", new { id = movie.MovieId });
+      return RedirectToAction("Index");
     }
   }
 }

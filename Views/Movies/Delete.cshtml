@@ -2,12 +2,12 @@
   Layout = "_Layout";
 }
 
-@model Filmography.Models.Movie
+@model Filmography.Models.Movie;
 
 <header>
   <p><strong>@Html.ActionLink("MOVIES", "Index")</strong></p>
 </header>
-
+<div id="push"></div>
 <h2>Are you sure you want to delete this?</h2>
 
 @Html.DisplayNameFor(model => model.MovieName): @Html.DisplayFor(model => model.MovieName)
@@ -15,4 +15,3 @@
 {
   <input type="submit" value="Delete" />
 }
-<div id="get-low"></div>

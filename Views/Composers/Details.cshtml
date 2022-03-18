@@ -5,11 +5,12 @@
 @model Filmography.Models.Composer
 
 <header>
-  <p><strong>@Html.ActionLink("COMPOSERS", "Index")</strong></p>
-  <p><strong>@Html.ActionLink("EDIT COMPOSER", "Edit", new { id = Model.ComposerId })</strong></p>
-  <p><strong>@Html.ActionLink("DELETE COMPOSER", "Delete", new { id = Model.ComposerId })</strong></p>
+  <p id="list1"><strong>@Html.ActionLink("COMPOSERS", "Index")</strong></p>
+  <p id="edit"><strong>@Html.ActionLink("EDIT COMPOSER", "Edit", new { id = Model.ComposerId })</strong></p>
+  <p id="delete"><strong>@Html.ActionLink("DELETE COMPOSER", "Delete", new { id = Model.ComposerId })</strong></p>
+  <p id="list2"><strong>@Html.ActionLink("Add a Movie", "AddMovie", new { id = Model.ComposerId })</strong></p>
 </header>
-
+<div id="push"></div>
 <h1>Composer Details</h1>
 <hr />
 <h3>Name:</h3>
@@ -27,7 +28,3 @@
     }
   }
 </ul>
-<br>
-
-<p>@Html.ActionLink("Add a Movie", "AddMovie", new { id = Model.ComposerId })</p>
-<div id="get-low"></div>

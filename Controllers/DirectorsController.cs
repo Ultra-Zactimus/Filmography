@@ -22,7 +22,7 @@ namespace Filmography.Controllers
       return View(model);
     }
 
-        public ActionResult Create()
+    public ActionResult Create()
     {
       ViewBag.MoviId = new SelectList(_db.Movies, "MovieId", "MovieName");
       return View();
@@ -39,9 +39,9 @@ namespace Filmography.Controllers
     public ActionResult Details(int id)
     {
       var thisDirector = _db.Directors
-          .Include(director => director.JoinEntities)
-          .ThenInclude(join => join.Movie)
-          .FirstOrDefault(director => director.DirectorId == id);
+        .Include(director => director.JoinEntities)
+        .ThenInclude(join => join.Movie)
+        .FirstOrDefault(director => director.DirectorId == id);
       return View(thisDirector);
     }
 
@@ -66,16 +66,14 @@ namespace Filmography.Controllers
 
     public ActionResult AddMovie(int id)
     {
-      var thisDirector = _db.Directors.FirstOrDefault(director => director.DirectorId == id);
-      var thisMovieWiki = _db.MovieWiki.Where(MovieWiki => MovieWiki.DirectorId == id);
-      
+      var wiki = _db.MovieWiki.Where(MovieWiki => MovieWiki.DirectorId == id);      
       List<Movie> movies = _db.Movies.ToList();
       List<Movie> movieList = _db.Movies.ToList();
-      foreach (MovieWiki movieDirector in thisMovieWiki)
+      foreach(MovieWiki w in wiki)
       {
         foreach(Movie movie in movies)
         {
-          if (movie.MovieId == movieDirector.MovieId)
+          if (movie.MovieId == w.MovieId)
           {
             movieList.Remove(movie);
           }
@@ -83,6 +81,7 @@ namespace Filmography.Controllers
       }
       ViewBag.MovieId = new SelectList(movieList, "MovieId", "MovieName");
       ViewBag.movieList = movieList.Count;
+      var thisDirector = _db.Directors.FirstOrDefault(director => director.DirectorId == id);
       return View(thisDirector);
     }
 

@@ -6,9 +6,9 @@
 @model List<Filmography.Models.Movie>;
 
 <header>
-  <p><strong>@Html.ActionLink("ADD NEW MOVIE", "Create", "Movies")</strong></p>
+  <p><strong> @Html.ActionLink("ADD NEW MOVIE", "Create", "Movies")</strong></p>
 </header>
-
+<div id="push"></div>
 <h1>Films</h1>
 
 @if (@Model.Count == 0)
@@ -20,4 +20,3 @@
 {
   <li><em><strong>@Html.ActionLink($"{movie.MovieName}", "Details", new { id = movie.MovieId })</strong></em></li>
 }
-<div id="get-low"></div>

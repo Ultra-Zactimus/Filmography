@@ -5,11 +5,11 @@
 @model Filmography.Models.Actor
 
 <header>
-  <p><strong>@Html.ActionLink("ACTORS", "Index")</strong></p>
-  <p id="list1"><strong>@Html.ActionLink("EDIT ACTOR", "Edit", new { id = Model.ActorId })</strong></p>
-  <p id="list2"><strong>@Html.ActionLink("DELETE ACTOR", "Delete", new { id = Model.ActorId })</strong></p>
+  <p id="list1"><strong>@Html.ActionLink("ACTORS", "Index")</strong></p>
+  <p id="edit"><strong>@Html.ActionLink("EDIT ACTOR", "Edit", new { id = Model.ActorId })</strong></p>
+  <p id="delete"><strong>@Html.ActionLink("DELETE ACTOR", "Delete", new { id = Model.ActorId })</strong></p>
 </header>
-
+<div id="push"></div>
 <h1>Actor Details</h1>
 <hr />
 <h3>Name:</h3>
@@ -30,4 +30,3 @@
 <br>
 
 <p>@Html.ActionLink("Add a Movie", "AddMovie", new { id = Model.ActorId })</p>
-<div id="get-low"></div>

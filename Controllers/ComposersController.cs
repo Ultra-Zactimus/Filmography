@@ -71,16 +71,14 @@ namespace Filmography.Controllers
 
     public ActionResult AddMovie(int id)
     {
-      var thisComposer = _db.Composers.FirstOrDefault(composer => composer.ComposerId == id);
-      var thisMovieWiki = _db.MovieWiki.Where(MovieWiki => MovieWiki.ComposerId == id);
-
+      var wiki = _db.MovieWiki.Where(MovieWiki => MovieWiki.ComposerId == id);
       List<Movie> movies = _db.Movies.ToList();
       List<Movie> movieList = _db.Movies.ToList();
-      foreach (MovieWiki MovieWiki in thisMovieWiki)
+      foreach(MovieWiki w in wiki)
       {
         foreach(Movie movie in movies)
         {
-          if (movie.MovieId == MovieWiki.MovieId)
+          if (movie.MovieId == w.MovieId)
           {
             movieList.Remove(movie);
           }
@@ -88,6 +86,7 @@ namespace Filmography.Controllers
       }
       ViewBag.MovieId = new SelectList(movieList, "MovieId", "MovieName");
       ViewBag.movieList = movieList.Count;
+      var thisComposer = _db.Composers.FirstOrDefault(composer => composer.ComposerId == id);
       return View(thisComposer);
     }
 

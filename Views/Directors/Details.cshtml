@@ -8,8 +8,9 @@
   <p id="list1"><strong>@Html.ActionLink("DIRECTORS", "Index")</strong></p>
   <p id="edit"><strong>@Html.ActionLink("EDIT DIRECTOR", "Edit", new { id = Model.DirectorId })</strong></p>
   <p id="delete"><strong>@Html.ActionLink("DELETE DIRECTOR", "Delete", new { id = Model.DirectorId })</strong></p>
+  <p id="list2"><strong>@Html.ActionLink("ADD A MOVIE", "AddMovie", new { id = Model.DirectorId })</strong></p>
 </header>
-
+<div id="push"></div>
 <h1>Director Details</h1>
 <hr />
 <h3>Name:</h3>
@@ -28,6 +29,3 @@
   }
 </ul>
 <br>
-
-<p><strong>@Html.ActionLink("ADD A MOVIE", "AddMovie", new { id = Model.DirectorId })</strong></p>
-<div id="get-low"></div>

@@ -40,7 +40,21 @@ CREATE TABLE `actors` (
   `ActorId` int NOT NULL AUTO_INCREMENT,
   `ActorName` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   PRIMARY KEY (`ActorId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `composers`
+--
+
+DROP TABLE IF EXISTS `composers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `composers` (
+  `ComposerId` int NOT NULL AUTO_INCREMENT,
+  `ComposerName` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  PRIMARY KEY (`ComposerId`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -54,45 +68,7 @@ CREATE TABLE `directors` (
   `DirectorId` int NOT NULL AUTO_INCREMENT,
   `DirectorName` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   PRIMARY KEY (`DirectorId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `movieactor`
---
-
-DROP TABLE IF EXISTS `movieactor`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `movieactor` (
-  `MovieActorId` int NOT NULL AUTO_INCREMENT,
-  `MovieId` int NOT NULL,
-  `ActorId` int NOT NULL,
-  PRIMARY KEY (`MovieActorId`),
-  KEY `IX_MovieActor_ActorId` (`ActorId`),
-  KEY `IX_MovieActor_MovieId` (`MovieId`),
-  CONSTRAINT `FK_MovieActor_Actors_ActorId` FOREIGN KEY (`ActorId`) REFERENCES `actors` (`ActorId`) ON DELETE CASCADE,
-  CONSTRAINT `FK_MovieActor_Movies_MovieId` FOREIGN KEY (`MovieId`) REFERENCES `movies` (`MovieId`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `moviedirector`
---
-
-DROP TABLE IF EXISTS `moviedirector`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `moviedirector` (
-  `MovieDirectorId` int NOT NULL AUTO_INCREMENT,
-  `MovieId` int NOT NULL,
-  `DirectorId` int NOT NULL,
-  PRIMARY KEY (`MovieDirectorId`),
-  KEY `IX_MovieDirector_DirectorId` (`DirectorId`),
-  KEY `IX_MovieDirector_MovieId` (`MovieId`),
-  CONSTRAINT `FK_MovieDirector_Directors_DirectorId` FOREIGN KEY (`DirectorId`) REFERENCES `directors` (`DirectorId`) ON DELETE CASCADE,
-  CONSTRAINT `FK_MovieDirector_Movies_MovieId` FOREIGN KEY (`MovieId`) REFERENCES `movies` (`MovieId`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,7 +83,32 @@ CREATE TABLE `movies` (
   `MovieName` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `Description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   PRIMARY KEY (`MovieId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `moviewiki`
+--
+
+DROP TABLE IF EXISTS `moviewiki`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `moviewiki` (
+  `MovieWikiId` int NOT NULL AUTO_INCREMENT,
+  `MovieId` int NOT NULL,
+  `ActorId` int DEFAULT NULL,
+  `DirectorId` int DEFAULT NULL,
+  `ComposerId` int DEFAULT NULL,
+  PRIMARY KEY (`MovieWikiId`),
+  KEY `IX_MovieWiki_ActorId` (`ActorId`),
+  KEY `IX_MovieWiki_ComposerId` (`ComposerId`),
+  KEY `IX_MovieWiki_DirectorId` (`DirectorId`),
+  KEY `IX_MovieWiki_MovieId` (`MovieId`),
+  CONSTRAINT `FK_MovieWiki_Actors_ActorId` FOREIGN KEY (`ActorId`) REFERENCES `actors` (`ActorId`) ON DELETE RESTRICT,
+  CONSTRAINT `FK_MovieWiki_Composers_ComposerId` FOREIGN KEY (`ComposerId`) REFERENCES `composers` (`ComposerId`) ON DELETE RESTRICT,
+  CONSTRAINT `FK_MovieWiki_Directors_DirectorId` FOREIGN KEY (`DirectorId`) REFERENCES `directors` (`DirectorId`) ON DELETE RESTRICT,
+  CONSTRAINT `FK_MovieWiki_Movies_MovieId` FOREIGN KEY (`MovieId`) REFERENCES `movies` (`MovieId`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -119,4 +120,4 @@ CREATE TABLE `movies` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-16 17:09:18
+-- Dump completed on 2022-03-17 16:25:20

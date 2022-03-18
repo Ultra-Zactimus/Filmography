@@ -66,3 +66,5 @@ C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Composers\Edit.c
 C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Composers\Index.cshtml.g.cs
 C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Movies\Create.cshtml.g.cs
 C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Movies\AddDirector.cshtml.g.cs
+C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Movies\AddActor.cshtml.g.cs
+C:\Users\ultra\desktop\Filmography\obj\Debug\net5.0\Razor\Views\Movies\AddComposer.cshtml.g.cs

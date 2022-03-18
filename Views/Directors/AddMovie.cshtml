@@ -8,7 +8,7 @@
   <p id="list1"><strong>@Html.ActionLink("ADD NEW MOVIE", "Create", "Movies")</strong></p>
   <p id="list2"><strong>@Html.ActionLink("DIRECTORS", "Index")</strong></p>
 </header>
-
+<div id="push"></div>
 <h2>Add a movie</h2>
 
 <h4>Add a movie to this director: @Html.DisplayFor(model => model.DirectorName)</h4>
@@ -29,4 +29,3 @@ else
 {
   <p>There are no movies to add to this director</p>
 }
-<div id="get-low"></div>
